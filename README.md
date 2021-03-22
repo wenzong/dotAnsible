@@ -55,3 +55,15 @@ $ ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -
     + GitHub
     + GitLab
     + Hosts
+
+## CheatSheet
+
++ check vim local changes
+
+```
+$ ansible-playbook -i inventory.local playbooks/devtools.yml -D -C --tags vim
+
+$ diff -r playbooks/roles/vim/files/after/ftplugin/ $HOME/.vim/after/ftplugin/
+
+$ vimdiff playbooks/roles/vim/templates/vimrc $HOME/.vimrc
+```
