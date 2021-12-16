@@ -67,6 +67,8 @@
       repo: https://github.com/keith/swift.vim.git
     - name: dash.vim
       repo: https://github.com/rizzatti/dash.vim.git
+    - name: YouCompleteMe
+      repo: https://github.com/ycm-core/YouCompleteMe.git
 
 - name: configure vimrc
   template: src=vimrc
