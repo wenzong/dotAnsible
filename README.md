@@ -67,3 +67,9 @@ $ diff -r playbooks/roles/vim/files/after/ftplugin/ $HOME/.vim/after/ftplugin/
 
 $ vimdiff playbooks/roles/vim/templates/vimrc $HOME/.vimrc
 ```
+
++ ping
+
+```
+$ ansible all -i inventory -m ping
+```
