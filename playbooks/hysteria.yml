@@ -7,15 +7,6 @@
         url: https://github.com/apernet/hysteria/releases/download/v1.3.1/hysteria-linux-amd64
         dest: /root/hysteria/hysteria-linux-amd64
         mode: 0744
-    - apt:
-        pkg:
-          - supervisor
-          - git
-          - wget
-          - iperf3
-          - mtr
-          - cron
-          - uuid
     - copy:
         content: |
           {
@@ -35,11 +26,6 @@
           }
         dest: /root/hysteria/config.json
         force: false
-    - copy:
-        content: |
-          net.core.rmem_max=26214400
-          net.core.wmem_max=26214400
-        dest: /etc/sysctl.d/99-hysteria.conf
     - copy:
         content: |
           [program:hysteria]
