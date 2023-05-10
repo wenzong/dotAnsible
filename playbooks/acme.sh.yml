@@ -1,0 +1,22 @@
+---
+- hosts: all
+  gather_facts: no
+  vars_prompt:
+    - name: email
+      prompt: ACME.sh email
+      private: no
+      confirm: true
+        
+  tasks:
+    - apt:
+        pkg:
+          - git
+          - curl
+          - socat
+    - git:
+        repo: https://github.com/acmesh-official/acme.sh.git
+        dest: ~/acme.sh
+    - ansible.builtin.command: ./acme.sh --install -m {{ email|quote }}
+      args:
+        chdir: ~/acme.sh
+        creates: ~/.acme.sh

@@ -10,6 +10,8 @@
           - iperf3
           - git
           - supervisor
+          - tmux
+          - socat
     - copy:
         content: |
           net.core.rmem_max=26214400
@@ -18,3 +20,7 @@
           net.core.default_qdisc=fq
           net.ipv4.tcp_congestion_control=bbr
         dest: /etc/sysctl.d/99-network.conf
+
+- hosts: all
+  roles:
+    - { role: tmux }
