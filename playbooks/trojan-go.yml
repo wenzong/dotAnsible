@@ -1,0 +1,53 @@
+---
+- hosts: all
+  gather_facts: no
+  vars_prompt:
+    - name: trojan_password
+      prompt: trojan-go password
+      private: no
+    - name: trojan_domain
+      prompt: trojan-go domain, for ssl certs and sni
+      private: no
+  tasks:
+    - apt:
+        pkg:
+          - unzip
+          - nginx-light
+    - file:
+        path: /root/trojan-go
+        state: directory
+    - unarchive:
+        src: https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
+        remote_src: true
+        dest: /root/trojan-go
+        creates: /root/trojan-go/trojan-go
+    - copy:
+        content: |
+          {
+            "run_type": "server",
+            "local_addr": "0.0.0.0",
+            "local_port": 443,
+            "remote_addr": "127.0.0.1",
+            "remote_port": 80,
+            "password": [
+              "{{ trojan_password }}"
+            ],
+            "ssl": {
+              "cert": "/root/.acme.sh/{{ trojan_domain }}_ecc/fullchain.cer",
+              "key": "/root/.acme.sh/{{ trojan_domain }}_ecc/{{ trojan_domain }}.key",
+              "sni": "{{ trojan_domain }}"
+            }
+          }
+        dest: /root/trojan-go/config.json
+    - copy:
+        content: |
+          [program:trojan-go]
+          directory = /root/trojan-go
+          command = /root/trojan-go/trojan-go -config config.json
+          environment = LOGGING_LEVEL=info
+          user = root
+          autostart = yes
+          autorestart = yes
+          stdout_logfile = /var/log/supervisor/trojan-go.log
+          stderr_logfile = /var/log/supervisor/trojan-go.log
+        dest: /etc/supervisor/conf.d/trojan-go.conf
