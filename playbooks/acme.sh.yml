@@ -12,6 +12,7 @@
           - git
           - curl
           - socat
+          - nginx-light
     - git:
         repo: https://github.com/acmesh-official/acme.sh.git
         dest: ~/acme.sh
@@ -19,3 +20,6 @@
       args:
         chdir: ~/acme.sh
         creates: ~/.acme.sh
+    # TODO
+    # set /etc/nginx/sites-enabled/{{ domain }}.conf
+    # acme.sh --issue -d {{ domain }} --nginx /etc/nginx/sites-enabled/{{ domain }}.conf --renew-hook "supervisorctl restart *"
