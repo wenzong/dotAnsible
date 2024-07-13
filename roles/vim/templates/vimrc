@@ -9,6 +9,8 @@ let g:mapleader = ","
 filetype plugin on
 filetype indent on
 
+" Enable modeline
+set modeline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Interface*
@@ -100,7 +102,7 @@ let g:indentLine_color_term = 239
 set listchars=tab:▸- ",eol:¬
 set list
 
-set colorcolumn=80
+set colorcolumn=80,120
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -245,4 +247,14 @@ let g:EclimFileTypeValidate = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Python-Mode*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_rope = 1
+let g:pymode_rope = 0
+let g:pymode_lint = 0
+
+let g:syntastic_javascript_checkers = ['jshint']
+
+let g:pymode_folding = 0
+let NERDTreeIgnore = ['*\.pyc$']
+
+"runtime macros/matchit.vim
+
+highlight MatchParen cterm=bold ctermbg=red ctermfg=blue
