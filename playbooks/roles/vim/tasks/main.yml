@@ -63,6 +63,10 @@
       repo: https://github.com/SirVer/ultisnips.git
     - name: splitjoin.vim
       repo: https://github.com/AndrewRadev/splitjoin.vim.git
+    - name: swift.vim
+      repo: https://github.com/keith/swift.vim.git
+    - name: dash.vim
+      repo: https://github.com/rizzatti/dash.vim.git
 
 - name: configure vimrc
   template: src=vimrc

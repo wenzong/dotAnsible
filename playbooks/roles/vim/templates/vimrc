@@ -213,7 +213,7 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Disable highlight when <leader>l is pressed
-nnoremap <silent> <leader>l :noh<cr>
+nnoremap <silent> <leader>l :nohl<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -263,6 +263,7 @@ let g:pymode_warnings = 0
 
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 
 let g:pymode_folding = 0
 let NERDTreeIgnore = ['*\.pyc$']
