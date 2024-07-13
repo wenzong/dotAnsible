@@ -184,8 +184,6 @@ set viminfo^=%
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Clipboard*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set clipboard^=unnamed
-
 if $TMUX == ''
     set clipboard+=unnamed
 endif
@@ -221,7 +219,7 @@ map <silent> <leader><cr> :noh<cr>
 " *Helper functions*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! FcitxClose()
-    let l:a = system("fcitx-remote -c")
+    let l:a = system("fcitx-remote -s com.apple.keylayout.US")
 endfunction
 autocmd InsertLeave * call FcitxClose()
 
@@ -241,15 +239,26 @@ let g:vim_markdown_folding_disabled = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Eclim*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EclimFileTypeValidate = 0
+" let g:EclimFileTypeValidate = 0
+" let g:EclimXmlValidate = 0
+" let g:EclimDtdValidate = 0
+" let g:EclimXsdValidate = 0
+" let g:EclimMavenPomClasspathUpdate = 0
+" let g:EclimMakeLCD = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Python-Mode*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode = 0
+let g:pymode_python = 'python3'
 let g:pymode_rope = 0
 let g:pymode_lint = 0
+"let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_checkers = ['pep8']
+let g:pymode_warnings = 0
 
+let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_javascript_checkers = ['jshint']
 
 let g:pymode_folding = 0
@@ -258,3 +267,11 @@ let NERDTreeIgnore = ['*\.pyc$']
 "runtime macros/matchit.vim
 
 highlight MatchParen cterm=bold ctermbg=red ctermfg=blue
+
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+nnoremap <leader>s :Ack!<cr>
