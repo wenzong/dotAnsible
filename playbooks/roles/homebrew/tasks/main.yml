@@ -78,8 +78,10 @@
     # - name: nodenv
     # - name: ntfs-3g
     # - name: oath-toolkit
+    - name: openjdk
     - name: openssh
     - name: p7zip
+    - name: plantuml
     - name: poppler
     # - name: prometheus
     - name: proxychains-ng
