@@ -234,6 +234,7 @@ execute pathogen#infect()
 " *vim markdown*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -275,3 +276,5 @@ if executable('ag')
 endif
 
 nnoremap <leader>s :Ack!<cr>
+
+set concealcursor=c

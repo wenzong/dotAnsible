@@ -1,0 +1,32 @@
+---
+- hosts: debian
+  tasks:
+    - apt:
+        update_cache: yes
+        cache_valid_time: 604800 # 86400 * 7
+        upgrade: safe
+      when: ansible_os_family == 'Debian'
+
+- hosts: raspbian
+  tasks:
+    - apt:
+        update_cache: yes
+        cache_valid_time: 604800 # 86400 * 7
+        upgrade: safe
+      when: ansible_os_family == 'Debian'
+      become: yes
+      become_user: root
+      become_method: sudo
+
+# TODO: there is no safe upgrade option
+- hosts: gentoo
+  tasks:
+    - portage:
+        sync: web
+      when: ansible_os_family == 'Gentoo'
+
+- hosts: osx
+  tasks:
+    - homebrew:
+        update_homebrew: yes
+        upgrade_all: yes

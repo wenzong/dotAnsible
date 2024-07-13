@@ -1,0 +1,13 @@
+[raspbian]
+pi
+pi2
+
+[raspbian:vars]
+ansible_user=pi
+
+[gentoo]
+thinkpad
+
+[debian]
+z1001
+do

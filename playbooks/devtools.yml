@@ -1,0 +1,14 @@
+---
+- hosts: all
+  roles:
+    - { role: vim,  tags: ['vim'] }
+    - { role: tmux, tags: ['tmux'] }
+    - { role: bin,  tags: ['bin'] }
+  tags:
+    - tools
+
+#    - role: awesome
+#      when: ansible_os_family == "Debian"
+#    - bash
+#    - pyenv
+#    - rbenv
