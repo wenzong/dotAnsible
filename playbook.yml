@@ -15,7 +15,6 @@
     - tmux
   tags:
     - tmux
-    - bin
 
 - hosts: all
   roles:
