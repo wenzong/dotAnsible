@@ -1,0 +1,54 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - file: path=/root/hysteria state=directory
+    - get_url:
+        url: https://github.com/apernet/hysteria/releases/download/v1.3.1/hysteria-linux-amd64
+        dest: /root/hysteria/hysteria-linux-amd64
+        mode: 0744
+    - apt:
+        pkg:
+          - supervisor
+          - git
+          - wget
+          - iperf3
+          - mtr
+          - cron
+          - uuid
+    - copy:
+        content: |
+          {
+            "listen": ":TODO",
+            "protocol": "udp",
+            "acme": {
+              "domains": [
+                "TODO"
+              ],
+              "email": "TODO"
+            },
+            "obfs": "TODO",
+            "up_mbps": 100,
+            "down_mbps": 100,
+            "recv_window_conn": 32000000,
+            "recv_window_client": 100000000
+          }
+        dest: /root/hysteria/config.json
+        force: false
+    - copy:
+        content: |
+          net.core.rmem_max=26214400
+          net.core.wmem_max=26214400
+        dest: /etc/sysctl.d/99-hysteria.conf
+    - copy:
+        content: |
+          [program:hysteria]
+          directory = /root/hysteria
+          command = /root/hysteria/hysteria-linux-amd64 server
+          environment = LOGGING_LEVEL=info
+          user = root
+          autostart = yes
+          autorestart = yes
+          stdout_logfile = /var/log/supervisor/hysteria.log
+          stderr_logfile = /var/log/supervisor/hysteria.log
+        dest: /etc/supervisor/conf.d/hysteria.conf
