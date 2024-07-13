@@ -7,10 +7,17 @@ Inspired by [erning-ansible](https://github.com/erning/erning-ansible)
 
 --------------
 
+## Prerequisite
+
+```
+$ brew install ansible
+$ ansible-galaxy collection install community.general # $HOME/.ansible/collections
+```
+
 ## Quick Start
 
 ```
-ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -D]
+$ ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -D]
 ```
 
 ## Todo

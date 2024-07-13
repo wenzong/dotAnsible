@@ -9,6 +9,7 @@
     - { role: vim,  tags: ['vim'] }
     - { role: tmux, tags: ['tmux'] }
     - { role: bin,  tags: ['bin'] }
+    - { role: homebrew, tags: ['homebrew'] }
   tags:
     - tools
 

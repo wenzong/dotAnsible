@@ -1,0 +1,111 @@
+---
+- name: brew install
+  community.general.homebrew:
+    state: present
+    name: "{{ item.name }}"
+  with_items:
+    - name: ansible
+    # - name: aria2
+    # - name: asciinema
+    # - name: automake
+    - name: axel
+    - name: bash-completion
+    - name: binutils
+    # - name: brew-cask-completion
+    # - name: beeftornado/rmtree/brew-rmtree
+    # - name: bufbuild/buf/buf
+    - name: cloc
+    # - name: cocoapods
+    # - name: composer
+    # - name: coreutils
+    - name: curl
+    - name: diffutils
+    - name: docker-completion
+    # - name: emacs
+    # - name: etcd
+    - name: fcitx-remote-for-osx
+    # - name: ffmpeg
+    # - name: fio
+    # - name: freeradius-server
+    - name: gawk
+    - name: gcc@4.9
+    - name: git
+    - name: git-extras
+    # - name: gitlab-runner
+    - name: gnu-sed
+    - name: gnu-tar
+    # - name: goaccess
+    # - name: golangci/tap/golangci-lint
+    # - name: gox
+    # - name: graphviz
+    - name: grep
+    - name: grpcurl
+    - name: helm
+    - name: htop
+    - name: ifstat
+    - name: iperf3
+    # - name: istioctl
+    - name: jq
+    - name: jsonnet
+    - name: k3d
+    - name: kind
+    - name: kube-ps1
+    # - name: aylei/tap/kubectl-debug
+    - name: kubectx
+    - name: kustomize
+    - name: less
+    # - name: libmemcached
+    # - name: libsodium
+    - name: m-cli
+    # - name: macvim
+    - name: vim
+    # - name: maven
+    # - name: maven-completion
+    # - name: minio/stable/mc
+    # - name: meson
+    # - name: mingw-w64
+    # - name: minicom
+    - name: minikube
+    # - name: minimal-racket
+    - name: mitmproxy
+    - name: moreutils
+    - name: mosh
+    - name: mtr
+    # - name: mysql@5.6
+    - name: ngrep
+    - name: nmap
+    # - name: nodenv
+    # - name: ntfs-3g
+    # - name: oath-toolkit
+    - name: openssh
+    - name: p7zip
+    - name: poppler
+    # - name: prometheus
+    - name: proxychains-ng
+    - name: pstree
+    - name: pyenv
+    # - name: qemu
+    # - name: fairwindsops/tap/rbac-lookup
+    # - name: rbenv
+    - name: reattach-to-user-namespace
+    # - name: redis
+    - name: rlwrap
+    - name: skaffold
+    - name: socat
+    # - name: sphinx-doc
+    - name: ssh-copy-id
+    - name: supervisor
+    - name: telnet
+    # - name: terraform
+    - name: the_silver_searcher
+    - name: tig
+    - name: tmux
+    - name: tree
+    - name: unar
+    - name: unrar
+    # - name: valgrind
+    - name: watch
+    - name: wget
+    - name: wireguard-tools
+    - name: wrk
+    - name: zlib
