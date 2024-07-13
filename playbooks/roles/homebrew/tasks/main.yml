@@ -11,13 +11,13 @@
     - name: axel
     - name: bash-completion
     - name: binutils
-    # - name: brew-cask-completion
-    # - name: beeftornado/rmtree/brew-rmtree
-    # - name: bufbuild/buf/buf
+    - name: brew-cask-completion
+    - name: beeftornado/rmtree/brew-rmtree
+    - name: bufbuild/buf/buf
     - name: cloc
     # - name: cocoapods
     # - name: composer
-    # - name: coreutils
+    - name: coreutils
     - name: curl
     - name: diffutils
     - name: docker-completion
@@ -34,8 +34,9 @@
     # - name: gitlab-runner
     - name: gnu-sed
     - name: gnu-tar
-    # - name: goaccess
-    # - name: golangci/tap/golangci-lint
+    - name: go
+    - name: goaccess
+    - name: golangci/tap/golangci-lint
     # - name: gox
     # - name: graphviz
     - name: grep
@@ -50,7 +51,7 @@
     - name: k3d
     - name: kind
     - name: kube-ps1
-    # - name: aylei/tap/kubectl-debug
+    - name: aylei/tap/kubectl-debug
     - name: kubectx
     - name: kustomize
     - name: less
@@ -61,7 +62,7 @@
     - name: vim
     # - name: maven
     # - name: maven-completion
-    # - name: minio/stable/mc
+    - name: minio/stable/mc
     # - name: meson
     # - name: mingw-w64
     # - name: minicom
@@ -85,8 +86,8 @@
     - name: pstree
     - name: pyenv
     # - name: qemu
-    # - name: fairwindsops/tap/rbac-lookup
-    # - name: rbenv
+    - name: fairwindsops/tap/rbac-lookup
+    - name: rbenv
     - name: reattach-to-user-namespace
     # - name: redis
     - name: rlwrap
@@ -121,14 +122,17 @@
     - name: bloomrpc
     - name: caffeine
     - name: calibre
+    - name: dbeaver-community
     - name: docker
     - name: dropbox
     - name: epic-games
     - name: google-chrome
     - name: macdown
     - name: nextcloud
+    - name: oracle-jdk
     - name: osxfuse
-    - name: sequel-pro
+    - name: sequel-ace
+    - name: sequel-pro-nightly
     - name: steam
     - name: stretchly
     - name: tunnelblick
