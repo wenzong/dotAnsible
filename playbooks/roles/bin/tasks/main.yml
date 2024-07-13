@@ -6,10 +6,16 @@
         state=directory
         recurse=yes
 
-- name: ensure ve is installed
-  get_url: url=https://raw.github.com/erning/ve/master/ve
-           dest=~/bin/ve
-           mode=0755
+- name: ensure ve/cht.sh is installed
+  get_url:
+    url: "{{ item.url }}"
+    dest: "~/bin/{{ item.dst }}"
+    mode: 0755
+  with_items:
+    - url: https://raw.github.com/erning/ve/master/ve
+      dst: ve
+    - url: https://cht.sh/:cht.sh
+      dst: cht.sh
 
 - name: copy bin files
   copy: src={{ item }}
