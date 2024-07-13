@@ -196,8 +196,9 @@ endif
 vmap << <gv
 vmap >> >gv
 
-nnoremap <space> za
+" nnoremap <space> za
 nnoremap <CR> i<CR><ESC>
+nnoremap <leader><cr> <cr>
 
 nmap <C-n> :NERDTreeToggle<cr>
 nmap <F8> :! xdot %<.dot<cr><cr>
@@ -211,8 +212,8 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+" Disable highlight when <leader>l is pressed
+nnoremap <silent> <leader>l :noh<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
