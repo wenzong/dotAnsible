@@ -15,21 +15,11 @@
 
 - hosts: all
   roles:
-    - vim
+    - { role: vim,  tags: ['vim'] }
+    - { role: tmux, tags: ['tmux'] }
+    - { role: bin,  tags: ['bin'] }
   tags:
-    - vim
-
-- hosts: all
-  roles:
-    - tmux
-  tags:
-    - tmux
-
-- hosts: all
-  roles:
-    - bin
-  tags:
-    - bin
+    - tools
 
 #    - role: awesome
 #      when: ansible_os_family == "Debian"
