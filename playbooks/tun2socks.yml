@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: make sure ~/tun2socks exists
+      file:
+        path: ~/tun2socks
+        state: directory
+    - name: download https://github.com/xjasonlyu/tun2socks/releases/download/v2.5.0/tun2socks-linux-amd64.zip
+      unarchive:
+        src: https://github.com/xjasonlyu/tun2socks/releases/download/v2.5.0/tun2socks-linux-amd64.zip
+        remote_src: true
+        dest: ~/tun2socks
+        creates: ~/tun2socks/tun2socks-linux-amd64
