@@ -158,7 +158,7 @@ map <C-l> <C-W>l
 nmap <C-a> 0
 imap <C-a> <ESC>0i
 nmap <C-e> $
-imap <C-e> <ESC>$i
+imap <C-e> <ESC>$a
 
 map <F5> :tabprevious<cr>
 map <F6> :tabnext<cr>
