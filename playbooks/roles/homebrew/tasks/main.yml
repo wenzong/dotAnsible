@@ -109,3 +109,35 @@
     - name: wireguard-tools
     - name: wrk
     - name: zlib
+
+- name: brew cask install
+  community.general.homebrew_cask:
+    state: present
+    name: "{{ item.name }}"
+  with_items:
+    - name: android-platform-tools
+    - name: appcleaner
+    - name: balenaetcher
+    - name: bloomrpc
+    - name: caffeine
+    - name: calibre
+    - name: docker
+    - name: dropbox
+    - name: epic-games
+    - name: google-chrome
+    - name: macdown
+    - name: nextcloud
+    - name: osxfuse
+    - name: sequel-pro
+    - name: steam
+    - name: stretchly
+    - name: tunnelblick
+    - name: visual-studio-code
+    - name: vnc-viewer
+    - name: wkhtmltopdf
+    # - name: android-file-transfer
+    # - name: balsamiq-wireframes
+    # - name: keepassx
+    # - name: wireshark
+    # - name: teamviewer-quicksupport
+    # - name: tuntap
