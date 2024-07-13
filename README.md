@@ -22,15 +22,21 @@ $ ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -
 
 ## Todo
 
-+ Ansible install Ansible
-+ bash
-    + configuration
-+ awesome(Debian/Gentoo)
-+ pyenv/rbenv
-+ system packages
++ ~~Ansible install Ansible~~
++ Terminal
+    + chsh -s bash
+    + .bashrc/.bash_profile
+    + (OSX)Terminal Profile
++ Browser
+    + Plugins/Extensions & Configurations
++ Sync Utils
+    + iCloud
+    + Dropbox
+    + Nextcloud
++ Packages
     + Debian/Gentoo
     + OSX(homebrew)
-+ other configuration
++ Configurations
     + keyboard speed
         + xset for Linux
         + defaults writes NSGlobalDomain KeyRepease for OSX
@@ -38,9 +44,14 @@ $ ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -
         + set layman/portage/eix
     + Debian
         + mirror
-    + pentadactyl(firefox)
-    + background image change
     + Linux locale/ntp/timezone/...
-+ supervisord (and tunnel settings)
-+ proxychain
-+ mutt
+    + OpenVPN
+    + OpenSSH
+    + git configs: .gitconfig
+    + supervisord
+    + proxychain
+    + workspace layout
++ SSH keypair
+    + GitHub
+    + GitLab
+    + Hosts
