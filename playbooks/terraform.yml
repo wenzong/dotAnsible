@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - community.general.homebrew_tap:
+        name: hashicorp/tap
+    - community.general.homebrew:
+        state: present
+        name: "{{ item.name }}"
+      with_items:
+        - name: hashicorp/tap/terraform
