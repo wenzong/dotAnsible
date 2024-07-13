@@ -6,6 +6,9 @@
         cache_valid_time: 604800 # 86400 * 7
         # upgrade: safe
       when: ansible_os_family == 'Debian'
+    - shell: apt list --upgradable 
+      register: apt_list_upgradable
+    - debug: var=apt_list_upgradable.stdout_lines
 
 - hosts: raspbian
   tasks:
@@ -17,6 +20,9 @@
       become: yes
       become_user: root
       become_method: sudo
+    - shell: apt list --upgradable 
+      register: apt_list_upgradable
+    - debug: var=apt_list_upgradable.stdout_lines
 
 - hosts: gentoo
   tasks:
