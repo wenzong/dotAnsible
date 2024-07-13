@@ -6,11 +6,25 @@
 
 - hosts: all
   roles:
+    - vim
+  tags:
+    - vim
+
+- hosts: all
+  roles:
+    - tmux
+  tags:
+    - tmux
+    - bin
+
+- hosts: all
+  roles:
+    - bin
+  tags:
+    - bin
+
 #    - role: awesome
 #      when: ansible_os_family == "Debian"
-    - vim
-    - tmux
-#    - git
-#    - bin
+#    - bash
 #    - pyenv
 #    - rbenv
