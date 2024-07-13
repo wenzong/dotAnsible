@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - debug: msg="{{ ansible_hostname }} {{ ansible_lsb.description }} ({{ ansible_distribution_release }})"
+      when: ansible_os_family == "Debian"
+
+- hosts: all
+  roles:
+#    - role: awesome
+#      when: ansible_os_family == "Debian"
+    - vim
+#    - tmux

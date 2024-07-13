@@ -1,0 +1,33 @@
+---
+- name: ensure .vim directory present
+  file: path={{ item }}
+        state=directory
+        recurse=yes
+  with_items:
+    - ~/.vim/autoload
+    - ~/.vim/bundle
+
+- name: install pathogen.vim
+  get_url: url=https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+           dest=~/.vim/autoload/pathogen.vim
+
+- name: install bundles
+  git: repo={{ item.repo }}
+       dest=~/.vim/bundle/{{ item.name }}
+  with_items:
+    - name: vim-airline
+      repo: https://github.com/bling/vim-airline.git
+    - name: ctrlp.vim
+      repo: https://github.com/kien/ctrlp.vim.git
+    - name: nerdtree
+      repo: https://github.com/scrooloose/nerdtree.git
+    - name: vim-gitgutter
+      repo: https://github.com/airblade/vim-gitgutter.git
+    - name: indentLine
+      repo: https://github.com/Yggdroot/indentLine.git
+    - name: syntastic
+      repo: https://github.com/scrooloose/syntastic.git
+
+- name: configure vimrc
+  template: src=vimrc
+            dest=~/.vimrc
