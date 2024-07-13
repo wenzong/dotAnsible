@@ -6,7 +6,6 @@
       prompt: ACME.sh email
       private: no
       confirm: true
-        
   tasks:
     - apt:
         pkg:

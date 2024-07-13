@@ -1,6 +1,11 @@
 ---
 - hosts: all
   gather_facts: no
+  vars_prompt:
+    - name: github_user
+      prompt: GitHub user name, set authorized_key
+      private: no
+      confirm: true
   tasks:
     - apt:
         pkg:
@@ -12,6 +17,7 @@
           - supervisor
           - tmux
           - socat
+          - lsof
     - copy:
         content: |
           net.core.rmem_max=26214400
@@ -20,7 +26,15 @@
           net.core.default_qdisc=fq
           net.ipv4.tcp_congestion_control=bbr
         dest: /etc/sysctl.d/99-network.conf
+    - authorized_key:
+        user: root
+        state: present
+        key: 'https://github.com/{{ github_user|quote }}.keys'
+    - user:
+        name: root
+        password_lock: true
 
 - hosts: all
+  gather_facts: no
   roles:
     - { role: tmux }
