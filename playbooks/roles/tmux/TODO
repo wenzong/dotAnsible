@@ -1,0 +1,5 @@
++ `brew/apt install tmux`
++ `reattach-to-user-namespace -l bash` require `brew install reattach-to-user-namespace`
++ (optional) Use [tmux-sensible](https://github.com/tmux-plugins/tmux-sensible)
+
+# vi: ft=markdown

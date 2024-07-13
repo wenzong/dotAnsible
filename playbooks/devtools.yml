@@ -1,5 +1,10 @@
 ---
 - hosts: all
+  tasks:
+    - name: gather facts
+      gather_facts:
+
+- hosts: all
   roles:
     - { role: vim,  tags: ['vim'] }
     - { role: tmux, tags: ['tmux'] }

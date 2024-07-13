@@ -3,3 +3,14 @@
   template: src=tmux.conf
             dest=~/.tmux.conf
             backup=yes
+
+- name: install tmux plugin manager
+  git: repo={{ item.repo }}
+       dest=~/.tmux/plugins/{{ item.name }}
+  with_items:
+    - name: tpm
+      repo: https://github.com/tmux-plugins/tpm
+    - name: tmux-copycat
+      repo: https://github.com/tmux-plugins/tmux-copycat
+    - name: tmux-resurrect
+      repo: https://github.com/tmux-plugins/tmux-resurrect

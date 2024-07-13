@@ -10,7 +10,7 @@ Inspired by [erning-ansible](https://github.com/erning/erning-ansible)
 ## Quick Start
 
 ```
-ansible-playbook -i localhost playbook.yml [--tags "bin,vim,tmux"]
+ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -D]
 ```
 
 ## Todo
