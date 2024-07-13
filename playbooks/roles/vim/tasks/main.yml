@@ -43,8 +43,8 @@
       repo: https://github.com/plasticboy/vim-markdown.git
     - name: vim-slumlord
       repo: https://github.com/scrooloose/vim-slumlord.git
-    - name: vim-snipmate
-      repo: https://github.com/garbas/vim-snipmate.git
+    # - name: vim-snipmate
+    #   repo: https://github.com/garbas/vim-snipmate.git
     - name: vim-snippets
       repo: https://github.com/honza/vim-snippets.git
     - name: vim-surround
@@ -59,6 +59,10 @@
       repo: git@github.com:dbeniamine/cheat.sh-vim.git
     - name: vim-toml
       repo: https://github.com/cespare/vim-toml.git
+    - name: ultisnips
+      repo: https://github.com/SirVer/ultisnips.git
+    - name: splitjoin.vim
+      repo: https://github.com/AndrewRadev/splitjoin.vim.git
 
 - name: configure vimrc
   template: src=vimrc
