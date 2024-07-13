@@ -9,7 +9,7 @@
     - { role: vim,  tags: ['vim'] }
     - { role: tmux, tags: ['tmux'] }
     - { role: bin,  tags: ['bin'] }
-    - { role: homebrew, tags: ['homebrew'] }
+    - { role: homebrew, tags: ['homebrew'], when: ansible_os_family == "Darwin" }
   tags:
     - tools
 

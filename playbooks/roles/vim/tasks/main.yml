@@ -60,3 +60,11 @@
   template: src=vimrc
             dest=~/.vimrc
             backup=yes
+
+- name: vim after ftplugin configurations
+  copy:
+    src: "{{ item }}"
+    dest: ~/.vim/after/ftplugin/
+    mode: 0644
+  with_fileglob:
+    - "after/ftplugin/*.vim"
