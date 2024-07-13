@@ -23,6 +23,7 @@
     - name: docker-completion
     # - name: emacs
     # - name: etcd
+    - name: fairwindsops/tap/rbac-lookup
     - name: fcitx-remote-for-osx
     # - name: ffmpeg
     # - name: fio
@@ -39,10 +40,12 @@
     - name: golangci/tap/golangci-lint
     # - name: gox
     # - name: graphviz
+    - name: gradle
     - name: grep
     - name: grpcurl
     - name: helm
     - name: htop
+    - name: icarus-verilog
     - name: ifstat
     - name: iperf3
     # - name: istioctl
@@ -93,6 +96,7 @@
     - name: reattach-to-user-namespace
     # - name: redis
     - name: rlwrap
+    - name: rust
     - name: skaffold
     - name: socat
     # - name: sphinx-doc
@@ -109,6 +113,7 @@
     # - name: valgrind
     - name: watch
     - name: wget
+    - name: xcodegen
     - name: wireguard-tools
     - name: wrk
     - name: zlib
