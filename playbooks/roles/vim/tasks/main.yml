@@ -53,6 +53,8 @@
       repo: http://github.com/tmux-plugins/vim-tmux-focus-events.git
     - name: vim-go
       repo: https://github.com/fatih/vim-go.git
+    - name: typescript-vim
+      repo: https://github.com/leafgarland/typescript-vim.git
 
 - name: configure vimrc
   template: src=vimrc
