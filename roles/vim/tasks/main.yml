@@ -15,18 +15,32 @@
   git: repo={{ item.repo }}
        dest=~/.vim/bundle/{{ item.name }}
   with_items:
-    - name: vim-airline
-      repo: https://github.com/bling/vim-airline.git
     - name: ctrlp.vim
       repo: https://github.com/kien/ctrlp.vim.git
-    - name: nerdtree
-      repo: https://github.com/scrooloose/nerdtree.git
-    - name: vim-gitgutter
-      repo: https://github.com/airblade/vim-gitgutter.git
     - name: indentLine
       repo: https://github.com/Yggdroot/indentLine.git
+    - name: nerdtree
+      repo: https://github.com/scrooloose/nerdtree.git
+    - name: python-mode
+      repo: https://github.com/klen/python-mode.git
     - name: syntastic
       repo: https://github.com/scrooloose/syntastic.git
+    - name: tlib_vim
+      repo: https://github.com/tomtom/tlib_vim.git
+    - name: vim-addon-mw-utils
+      repo: https://github.com/MarcWeber/vim-addon-mw-utils.git
+    - name: vim-airline
+      repo: https://github.com/bling/vim-airline.git
+    - name: vim-gitgutter
+      repo: https://github.com/airblade/vim-gitgutter.git
+    - name: vim-markdown
+      repo: https://github.com/plasticboy/vim-markdown.git
+    - name: vim-snipmate
+      repo: https://github.com/garbas/vim-snipmate.git
+    - name: vim-snippets
+      repo: https://github.com/honza/vim-snippets.git
+    - name: vim-surround
+      repo: https://github.com/tpope/vim-surround.git
 
 - name: configure vimrc
   template: src=vimrc

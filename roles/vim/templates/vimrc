@@ -1,46 +1,3 @@
-" Contents:
-"    -> |General|
-"    -> |Interface|
-"    -> |Colors and Fonts|
-"    -> |Files and backups|
-"    -> |Text, tab and indent related|
-"    -> |Moving around, tabs and buffers|
-"    -> |Status_line|
-"    -> |Mappings|
-"    -> |Helper_functions|
-"    -> |Plugins|
-"    -> |Misc|
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ORIGIN REPO:
-"
-" > maintainer:
-" >       Amir Salihefendic
-" >       http://amix.dk - amix@amix.dk
-" >
-" > Version:
-" >       5.0 - 29/05/12 15:43:36
-" >
-" > Blog_post:
-" >       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-" >
-" > Awesome_version:
-" >       Get this config, nice color schemes and lots of plugins!
-" >
-" >       Install the awesome version from:
-" >
-" >           https://github.com/amix/vimrc
-" >
-" > Syntax_highlighted:
-" >       http://amix.dk/vim/vimrc.html
-" >
-" > Raw_version:
-" >       http://amix.dk/vim/vimrc.txt
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *General*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -62,6 +19,12 @@ set number
 " Show cmd while typing
 set showcmd
 
+" Height of the command bar
+set cmdheight=2
+
+" Always show the status line
+set laststatus=2
+
 " Scroll margin
 set scrolloff=7
 
@@ -70,12 +33,6 @@ set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~
-
-" Height of the command bar
-set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -90,9 +47,6 @@ set hlsearch
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
-" Regular Expressions turn magic on
-set magic
-
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
@@ -102,14 +56,24 @@ set matchtime=2
 set noerrorbells
 set novisualbell
 set t_vb=
+
 set timeoutlen=500
 
 set completeopt=longest,menu
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" *NOT SURE*
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" A buffer becomes hidden when it is abandoned
+set hidden
+
+" Regular Expressions turn magic on
+set magic
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" *Colors and Fonts*
+" *Content Colors, Encoding, Fonts*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
@@ -135,6 +99,8 @@ let g:indentLine_color_term = 239
 
 set listchars=tab:▸- ",eol:¬
 set list
+
+set colorcolumn=80
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,7 +133,7 @@ set wrap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Moving around, tabs, windows and buffers*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable arrow keys
+" Forbid arrow keys
 map <LEFT> <Nop>
 map <RIGHT> <Nop>
 map <UP> <Nop>
@@ -182,9 +148,6 @@ imap <DOWN> <Nop>
 map j gj
 map k gk
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -197,9 +160,6 @@ imap <C-a> <ESC>0i
 nmap <C-e> $
 imap <C-e> <ESC>$i
 
-vmap << <gv
-vmap >> >gv
-
 map <F5> :tabprevious<cr>
 map <F6> :tabnext<cr>
 
@@ -210,7 +170,7 @@ try
 catch
 endtry
 
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
@@ -219,18 +179,23 @@ autocmd BufReadPost *
 set viminfo^=%
 
 
-""""""""""""""""""""""""""""""
-" *Status line*
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" *Clipboard*
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set clipboard^=unnamed
 
-" Format the status line
-" set statusline=[%F]%y%r%m%*%=[CWD:%{getcwd()}][Line:%l/%L,Column:%c][%p%%]
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Mappings*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" shift block
+vmap << <gv
+vmap >> >gv
+
 nnoremap <space> za
 nnoremap <CR> i<CR><ESC>
 
@@ -245,6 +210,9 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -263,6 +231,18 @@ execute pathogen#infect()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" *Not determined*
+" *vim markdown*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" *Eclim*
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EclimFileTypeValidate = 0
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" *Python-Mode*
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_rope = 1
