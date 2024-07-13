@@ -281,3 +281,10 @@ endif
 nnoremap <leader>s :Ack!<cr>
 
 set concealcursor=c
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Java / YouCompleteMe
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_java_checkers = []
+let g:ycm_semantic_triggers =  { 'java': ['re!\w{2}'] }
+let g:ycm_java_binary_path = trim(system('/usr/libexec/java_home -v 17')).'/bin/java'
