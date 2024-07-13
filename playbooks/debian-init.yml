@@ -1,0 +1,31 @@
+---
+- hosts: all
+  tasks:
+    - apt:
+        pkg:
+          - mtr
+          - dnsutils
+          - iperf3
+          - git
+          - supervisor
+          - tmux
+          - socat
+          - lsof
+          - vim
+          - make
+          # pyenv
+          - zlib1g-dev
+          - libssl-dev
+          - build-essential
+          - zlib1g-dev
+          - libffi-dev
+          - libbz2-dev
+          - libreadline-dev
+          - libsqlite3-dev
+          - liblzma-dev
+          #
+          - libaio-dev
+          - nvidia-cuda-toolkit
+          #
+          - tree
+          - tig

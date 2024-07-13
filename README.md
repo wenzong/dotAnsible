@@ -17,7 +17,7 @@ $ ansible-galaxy collection install community.general # $HOME/.ansible/collectio
 ## Quick Start
 
 ```
-$ ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -D]
+$ ansible-playbook -i inventory.local playbook.yml [--tags "bin,vim,tmux"] [-C -D] [-l group/host]
 ```
 
 ## Todo
