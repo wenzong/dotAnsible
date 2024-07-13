@@ -9,7 +9,7 @@
     # - name: asciinema
     # - name: automake
     - name: axel
-    - name: bash-completion
+    - name: bash-completion@2
     - name: binutils
     - name: brew-cask-completion
     - name: beeftornado/rmtree/brew-rmtree
@@ -41,6 +41,7 @@
     # - name: gox
     # - name: graphviz
     - name: gradle
+    - name: gradle-completion
     - name: grep
     - name: grpcurl
     - name: helm
