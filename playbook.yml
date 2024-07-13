@@ -1,8 +1,17 @@
 ---
 - hosts: all
   tasks:
-    - debug: msg="{{ ansible_hostname }} {{ ansible_lsb.description }} ({{ ansible_distribution_release }})"
-      when: ansible_os_family == "Debian"
+    - setup: filter="ansible_distribution*"
+      register: distribution_info
+    - debug: var=distribution_info['ansible_facts']
+    - setup: filter="ansible_os*"
+      register: os_info
+    - debug: var=os_info['ansible_facts']
+    - setup:
+      register: all_info
+    - debug: var=ansible_env
+  tags:
+    - debug
 
 - hosts: all
   roles:

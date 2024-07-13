@@ -8,7 +8,7 @@
     - ~/.vim/bundle
 
 - name: install pathogen.vim
-  get_url: url=https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  get_url: url=http://git.io/vl18W
            dest=~/.vim/autoload/pathogen.vim
 
 - name: install bundles
@@ -45,3 +45,4 @@
 - name: configure vimrc
   template: src=vimrc
             dest=~/.vimrc
+            backup=yes

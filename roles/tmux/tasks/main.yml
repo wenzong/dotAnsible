@@ -2,3 +2,4 @@
 - name: configure tmux
   template: src=tmux.conf
             dest=~/.tmux.conf
+            backup=yes
