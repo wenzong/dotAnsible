@@ -8,7 +8,7 @@
     - ~/.vim/bundle
 
 - name: install pathogen.vim
-  get_url: url=http://git.io/vl18W
+  get_url: url=https://git.io/vl18W
            dest=~/.vim/autoload/pathogen.vim
 
 - name: install bundles
@@ -50,7 +50,7 @@
     - name: vim-surround
       repo: https://github.com/tpope/vim-surround.git
     - name: vim-tmux-focus-events
-      repo: http://github.com/tmux-plugins/vim-tmux-focus-events.git
+      repo: https://github.com/tmux-plugins/vim-tmux-focus-events.git
     - name: vim-go
       repo: https://github.com/fatih/vim-go.git
     - name: typescript-vim
