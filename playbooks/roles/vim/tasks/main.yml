@@ -57,6 +57,8 @@
       repo: https://github.com/leafgarland/typescript-vim.git
     - name: cheat.sh-vim
       repo: git@github.com:dbeniamine/cheat.sh-vim.git
+    - name: vim-toml
+      repo: https://github.com/cespare/vim-toml.git
 
 - name: configure vimrc
   template: src=vimrc
