@@ -9,4 +9,8 @@
 #    - role: awesome
 #      when: ansible_os_family == "Debian"
     - vim
-#    - tmux
+    - tmux
+#    - git
+#    - bin
+#    - pyenv
+#    - rbenv

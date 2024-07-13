@@ -226,7 +226,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=[%F]%y%r%m%*%=[CWD:%{getcwd()}][Line:%l/%L,Column:%c][%p%%]
+" set statusline=[%F]%y%r%m%*%=[CWD:%{getcwd()}][Line:%l/%L,Column:%c][%p%%]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Mappings*
@@ -263,7 +263,6 @@ execute pathogen#infect()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" *Misc*
+" *Not determined*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-" noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+let g:vim_markdown_folding_disabled=1
