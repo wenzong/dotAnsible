@@ -55,6 +55,8 @@
       repo: https://github.com/fatih/vim-go.git
     - name: typescript-vim
       repo: https://github.com/leafgarland/typescript-vim.git
+    - name: cheat.sh-vim
+      repo: git@github.com:dbeniamine/cheat.sh-vim.git
 
 - name: configure vimrc
   template: src=vimrc
