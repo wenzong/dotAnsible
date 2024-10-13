@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: no
+  vars_prompt:
+    - name: domain
+      prompt: Domain
+      private: no
+      confirm: true
+  tasks:
+    - name: set nginx config
+      ansible.builtin.copy:
+        content: |
+          server {
+            listen 80;
+            server_name {{ domain }};
+          }
+        dest: /etc/nginx/sites-enabled/{{ domain }}.conf
+    - ansible.builtin.command: /root/.acme.sh/acme.sh --issue -d {{ domain }} --nginx /etc/nginx/sites-enabled/{{ domain }}.conf --renew-hook "supervisorctl restart *"

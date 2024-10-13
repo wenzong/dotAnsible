@@ -29,3 +29,6 @@
           #
           - tree
           - tig
+          - silversearcher-ag
+          #
+          - net-tools
