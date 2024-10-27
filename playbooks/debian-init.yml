@@ -25,7 +25,7 @@
           - liblzma-dev
           #
           - libaio-dev
-          - nvidia-cuda-toolkit
+          # - nvidia-cuda-toolkit
           #
           - tree
           - tig

@@ -1,0 +1,97 @@
+---
+# wireguard
+- hosts: all
+  vars_prompt:
+    - name: init_interface
+      prompt: "initialize wireguard interface? [y/n]"
+      default: "n"
+      private: no
+    - name: init_interface_name
+      prompt: "initialize wireguard interface name"
+      default: "wg0"
+      private: no
+    - name: init_interface_address
+      prompt: "initialize wireguard interface address"
+      default: "10.0.0.1/24"
+      private: no
+    - name: init_interface_port
+      prompt: "initialize wireguard interface port"
+      default: "51820"
+      private: no
+    - name: advertiesed_endpoint
+      prompt: "advertiesed endpoint, available in public network"
+      private: no
+  tasks:
+    - name: install wireguard-tools
+      apt:
+        pkg:
+          - wireguard-tools
+          - qrencode
+    - name: make sure /etc/wireguard/{pki,clientconf}/ exists
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - /etc/wireguard/pki/
+        - /etc/wireguard/clientconf/
+      when: init_interface == 'y' or init_interface == 'Y'
+    - name: generate private key & public key in /etc/wireguard/pki/ for wg0
+      shell: "wg genkey | tee /etc/wireguard/pki/{{ init_interface_name }}.private | wg pubkey > /etc/wireguard/pki/{{ init_interface_name }}.public"
+      args:
+        creates: "/etc/wireguard/pki/{{ init_interface_name }}.private"
+      when: init_interface == 'y' or init_interface == 'Y' and init_interface_name.startswith('wg')
+    - name: cat private key and register as ansible variable
+      shell: "cat /etc/wireguard/pki/{{ init_interface_name }}.private"
+      register: private_key
+      when: init_interface == 'y' or init_interface == 'Y' and init_interface_name.startswith('wg')
+    - name: generate server config in /etc/wireguard/{{ init_interface_name }}.conf
+      copy:
+        content: |
+          [Interface]
+          Address = {{ init_interface_address }}
+          PrivateKey = {{ private_key.stdout.strip() }}
+          ListenPort = {{ init_interface_port }}
+        dest: "/etc/wireguard/{{ init_interface_name }}.conf"
+      args:
+        force: false
+      when: init_interface == 'y' or init_interface == 'Y' and init_interface_name.startswith('wg')
+    - name: copy gen.sh
+      copy:
+        content: |
+          CLIENT_NAME=$1
+          CLIENT_IP=$2
+
+          wg genkey | tee pki/${CLIENT_NAME}.key | wg pubkey > pki/${CLIENT_NAME}.key.pub
+
+          PRI_KEY=$(cat pki/${CLIENT_NAME}.key)
+          PUB_KEY=$(cat pki/${CLIENT_NAME}.key.pub)
+
+          WG_PUB_KEY=$(cat /etc/wireguard/pki/{{ init_interface_name }}.public)
+
+          cat << EOF > clientconf/${CLIENT_NAME}.conf
+          [Interface]
+          PrivateKey = ${PRI_KEY}
+          Address = ${CLIENT_IP}/32
+
+          [Peer]
+          PublicKey = ${WG_PUB_KEY}
+          Endpoint = {{ advertiesed_endpoint }}
+          AllowedIps = 10.0.0.1/32
+          PersistentKeepalive = 180
+          EOF
+
+          cp -v -f --backup=numbered {{ init_interface_name }}.conf {{ init_interface_name }}.conf.bak
+          cat << EOF >> {{ init_interface_name }}.conf
+
+          [Peer]
+          # Name ${CLIENT_NAME}
+          PublicKey = ${PUB_KEY}
+          AllowedIPs = ${CLIENT_IP}/32
+          EOF
+
+          wg syncconf {{ init_interface_name }}  <(wg-quick strip {{ init_interface_name }})
+          qrencode -t ansiutf8 < clientconf/${CLIENT_NAME}.conf
+        dest: /etc/wireguard/gen.sh
+      args:
+        force: false
+      when: init_interface == 'y' or init_interface == 'Y' and init_interface_name.startswith('wg')
