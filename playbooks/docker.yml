@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - apt:
+        pkg:
+          - docker.io
+          - docker-compose
+    # - name: add user to docker group
+    #   user:
+    #     name: "{{ ansible_user }}"
+    #     groups: docker
+    #     append: yes
